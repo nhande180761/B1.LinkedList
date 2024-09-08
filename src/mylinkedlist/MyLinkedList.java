@@ -92,7 +92,7 @@ public class MyLinkedList {
         if (head == null){
             return;
         }
-        if (head.next != null){
+        if (head.next == null){
             deleteFirst();
         }
         Node temp = head;
@@ -104,21 +104,21 @@ public class MyLinkedList {
         previous.next = null;
     }
 
-    public void delete(int index){
-        if (index == 0){
-            deleteFirst();
-            return;
-        }else if (index == length() - 1){
-            deleteLast();
-            return;
-        } else {
-            Node preNodeDelete = head;
-            for (int i = 1; i < index; i++){
-                preNodeDelete = preNodeDelete.next;
+        public void delete(int index){
+            if (index == 0){
+                deleteFirst();
+                return;
+            }else if (index == length() - 1){
+                deleteLast();
+                return;
+            } else {
+                Node preNodeDelete = head;
+                for (int i = 1; i < index; i++){
+                    preNodeDelete = preNodeDelete.next;
+                }
+                preNodeDelete.next = preNodeDelete.next.next;
             }
-            preNodeDelete.next = preNodeDelete.next.next;
         }
-    }
 
     public boolean search(int data){
         if (head == null){
